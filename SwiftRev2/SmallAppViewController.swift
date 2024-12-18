@@ -9,21 +9,28 @@ import UIKit
 
 class SmallAppViewController: UIViewController {
 
+    @IBOutlet weak var btn: UIButton!
+    @IBOutlet weak var img: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        img.layer.borderWidth = 1
+        img.layer.cornerRadius = 25
+        
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 25
+        btn.backgroundColor = .clear
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func clickTapped(_ sender: Any) {
+        let urlString = "https://images.unsplash.com/5/unsplash-kitsune-4.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bc01c83c3da0425e9baa6c7a9204af81"
+        let url = URL(string: urlString)
+        
+        guard let data = try? Data(contentsOf: url!) else{
+            return
+        }
+        img.image = UIImage(data: data)
     }
-    */
-
+    
 }
